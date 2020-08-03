@@ -4,7 +4,7 @@ This is a boilerplate project used for starting new projects!
 
 ## Set up
 
-1. create a .env file for the project with API_KEY given 
+1. create a .env file for the project with API_TOKEN given 
 
 ## Scripts
 
