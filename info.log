@@ -1,0 +1,51 @@
+{"message":"Unauthorized request to path: /bookmarks","level":"error"}
+{"message":"Unauthorized request to path: /","level":"error"}
+{"message":"Unauthorized request to path: /","level":"error"}
+{"message":"Unauthorized request to path: /bookmarks","level":"error"}
+{"message":"Unauthorized request to path: /bookmarks","level":"error"}
+{"message":"Unauthorized request to path: /bookmarks","level":"error"}
+{"message":"Unauthorized request to path: /bookmarks","level":"error"}
+{"message":"Unauthorized request to path: /bookmarks","level":"error"}
+{"message":"Unauthorized request to path: /bookmarks","level":"error"}
+{"message":"Unauthorized request to path: /bookmarks","level":"error"}
+{"message":"title is required","level":"error"}
+{"message":"Unauthorized request to path: /bookmarks","level":"error"}
+{"message":"Invalid url 'www.nytimes.com' supplied","level":"error"}
+{"message":"Unauthorized request to path: /bookmarks","level":"error"}
+{"message":"Unauthorized request to path: /bookmarks","level":"error"}
+{"message":"Bookmark with id 4e75978c-af06-4726-9f5e-6264183d5a72 created","level":"info"}
+{"message":"Unauthorized request to path: /bookmarks","level":"error"}
+{"message":"Unauthorized request to path: /bookmarks/4e75978c-af06-4726-9f5e-6264183d5a72","level":"error"}
+{"message":"Bookmark with id 4e75978c-af06-4726-9f5e-6264183d5a72 not found.","level":"error"}
+{"message":"Unauthorized request to path: /bookmarks/4e75978c-af06-4726-9f5e-6264183d5a72","level":"error"}
+{"message":"Bookmark with id 4e75978c-af06-4726-9f5e-6264183d5a72 not found.","level":"error"}
+{"message":"Unauthorized request to path: /bookmarks/4e75978caf0647269f5e6264183d5a72","level":"error"}
+{"message":"Bookmark with id 4e75978caf0647269f5e6264183d5a72 not found.","level":"error"}
+{"message":"Unauthorized request to path: /bookmarks/78ce46f1-2e00-4fa9-beee-87c14be3a51a","level":"error"}
+{"message":"Bookmark with id 78ce46f1-2e00-4fa9-beee-87c14be3a51a not found.","level":"error"}
+{"message":"Unauthorized request to path: /bookmarks","level":"error"}
+{"message":"Unauthorized request to path: /bookmarks/24935cfd-546b-4ce8-a5ee-018a670063d8","level":"error"}
+{"message":"Unauthorized request to path: /bookmarks","level":"error"}
+{"message":"Bookmark with id cc05cb1f-a028-43d4-aeb3-ace1e5aa0e40 created","level":"info"}
+{"message":"Unauthorized request to path: /bookmarks","level":"error"}
+{"message":"Unauthorized request to path: /bookmarks/cc05cb1f-a028-43d4-aeb3-ace1e5aa0e40","level":"error"}
+{"message":"Unauthorized request to path: /bookmarks/cc05cb1f-a028-43d4-aeb3-ace1e5aa0e40","level":"error"}
+{"message":"Bookmark with id cc05cb1f-a028-43d4-aeb3-ace1e5aa0e40 deleted.","level":"info"}
+{"message":"Unauthorized request to path: /bookmarks/cc05cb1f-a028-43d4-aeb3-ace1e5aa0e40","level":"error"}
+{"message":"Bookmark with id cc05cb1f-a028-43d4-aeb3-ace1e5aa0e40 not found.","level":"error"}
+{"message":"Unauthorized request to path: /bookmarks","level":"error"}
+{"message":"Unauthorized request to path: /bookmarks/","level":"error"}
+{"message":"Unauthorized request to path: /bookmarks/0902166a-4f2d-4b2b-a4c9-5870556d31eb","level":"error"}
+{"message":"Bookmark with id 0902166a-4f2d-4b2b-a4c9-5870556d31eb deleted.","level":"info"}
+{"message":"Unauthorized request to path: /bookmarks","level":"error"}
+{"message":"Unauthorized request to path: /bookmarks","level":"error"}
+{"message":"Unauthorized request to path: /bookmarks","level":"error"}
+{"message":"Unauthorized request to path: /bookmarks","level":"error"}
+{"message":"Unauthorized request to path: /bookmarks","level":"error"}
+{"message":"Unauthorized request to path: /bookmarks","level":"error"}
+{"message":"Unauthorized request to path: /bookmarks","level":"error"}
+{"message":"Unauthorized request to path: /bookmarks","level":"error"}
+{"message":"Bookmark with id 4b689ec3-9a76-46bc-83ac-73d99636646f created","level":"info"}
+{"message":"Unauthorized request to path: /bookmarks/4b689ec3-9a76-46bc-83ac-73d99636646f","level":"error"}
+{"message":"Unauthorized request to path: /bookmarks/4b689ec3-9a76-46bc-83ac-73d99636646f","level":"error"}
+{"message":"Bookmark with id 4b689ec3-9a76-46bc-83ac-73d99636646f deleted.","level":"info"}
