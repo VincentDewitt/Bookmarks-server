@@ -51,3 +51,26 @@
 {"message":"Bookmark with id 4b689ec3-9a76-46bc-83ac-73d99636646f deleted.","level":"info"}
 {"message":"Bookmark with id d0300f4a-2a4b-47fc-9beb-3b73fa8c220d created","level":"info"}
 {"message":"Bookmark with id d0300f4a-2a4b-47fc-9beb-3b73fa8c220d deleted.","level":"info"}
+{"message":"Unauthorized request to path: /bookmarks","level":"error"}
+{"message":"Unauthorized request to path: /bookmarks","level":"error"}
+{"message":"Unauthorized request to path: /bookmarks","level":"error"}
+{"message":"Unauthorized request to path: /bookmarks","level":"error"}
+{"message":"Unauthorized request to path: /bookmarks/04e7dd43-f141-449e-9188-6f9ce1e8cc4f","level":"error"}
+{"message":"Unauthorized request to path: /bookmarks","level":"error"}
+{"message":"Unauthorized request to path: /bookmarks/6905449f-83ed-4b89-bd97-36222d2b1c52","level":"error"}
+{"message":"Unauthorized request to path: /bookmarks","level":"error"}
+{"message":"Unauthorized request to path: /bookmarks/26a10cec-0cd4-4083-b699-7aa45f6e44a9","level":"error"}
+{"message":"Unauthorized request to path: /bookmarks","level":"error"}
+{"message":"Unauthorized request to path: /bookmarks/b532891a-0c37-45db-acf3-ceff0f4bd32d","level":"error"}
+{"message":"Unauthorized request to path: /bookmarks","level":"error"}
+{"message":"Unauthorized request to path: /bookmarks/d739a17b-95a1-4d22-9dc8-1d95bea423af","level":"error"}
+{"message":"Unauthorized request to path: /bookmarks","level":"error"}
+{"message":"Unauthorized request to path: /bookmarks/b71ca5a6-6023-4d5e-adad-95ca6600f7b0","level":"error"}
+{"message":"Unauthorized request to path: /bookmarks","level":"error"}
+{"message":"Unauthorized request to path: /bookmarks/ea1677dd-34eb-45ad-b003-6eabf4e61b9b","level":"error"}
+{"message":"Unauthorized request to path: /bookmarks","level":"error"}
+{"message":"Unauthorized request to path: /bookmarks/2fa74208-2e9e-4588-a5e1-63204b3d9570","level":"error"}
+{"message":"Bookmark with id 123 not found.","level":"error"}
+{"message":"Unauthorized request to path: /bookmarks","level":"error"}
+{"message":"Unauthorized request to path: /bookmarks/ce09079e-f9d8-4d9d-9c8f-71c00d67cddd","level":"error"}
+{"message":"Bookmark with id 123 not found.","level":"error"}
