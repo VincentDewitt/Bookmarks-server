@@ -1,15 +1,15 @@
 const express = require('express')
-const store = require('./store')
 const logger = require('./logger')
-const { isWebUri } = require('valid-url')
 const { v4: uuid } = require('uuid')
 const bookmarksService = require('./bookmarks-service')
 const Knex = require('knex')
 const { DB_URL } = require('./config')
-const bodyParser = express.json()
 const xss = require('xss')
+const path =require('path')
+const { getBookmarkValidationError } = require('./bookmark-validator')
 
 const bookmarksRouter = express.Router()
+const bodyParser = express.json()
 
 const serializeBookmark = bookmark => ({
     id: bookmark.id,
@@ -20,7 +20,8 @@ const serializeBookmark = bookmark => ({
 })
 
 bookmarksRouter
-    .route('/bookmarks')
+    .route('/')
+
     .get((req,res, next) => {
         bookmarksService.getAllBookmarks(req.app.get('db'))
             .then(bookmarks => {
@@ -28,78 +29,102 @@ bookmarksRouter
             })
             .catch(next)
     })
+
     .post(bodyParser, (req,res, next) => {
-        for (const field of ['title', 'url', 'description', 'rating']){
-            if (!req.body[field]) {
+        const {title, url, description, rating} = req.body
+        const newBookmark = { title, url, description, rating }
+        console.log(title,url,rating)
+        for (const field of ['title', 'url', 'rating']){
+            if (!newBookmark[field]) {
                 logger.error(`${field} is required`)
                 return res.status(400).send({
-                    error: { message: `'${field} is required` } 
+                    error: { message: `'${field}' is required` } 
                 })
             }
         }
-        const { title, url ,decription, rating } = req.body
-        
-        const ratingNum = Number(rating)
-        
-        if(!Number.isInteger(ratingNum) || ratingNum < 0 || ratingNum > 5){
-            logger.error(`Invalid rating '${rating}' supplied`)
-            return res.status(400).send({
-                error: { message: `'rating' must be a number between 0 and 5`}
-            })
-        }
 
-        if(!isWebUri(url)) {
-            logger.error(`Invalid url '${url}' supplied`)
-            return res.status(400).send({
-                error: { message: `'url' must be a vlaid URL` }
-        })
-    }
-        const newBookmark = { title, url, description, rating}
+        const error = getBookmarkValidationError(newBookmark)
+
+        if (error) return res.status(400).send(error)
 
         bookmarksService.insertBookmark(
             req.app.get('db'),
             newBookmark
         )
             .then(bookmark => {
-                logger.info(`Bookmark with id ${bookmark.id} created.`)
+                logger.info(`Bookmark with id ${bookmark.id} created`)
                 res
                     .status(201)
-                    .location(`/bookmarks/${bookmark.id}`)
+                    .location(path.posix.join(req.originalUrl, `${bookmark.id}`))
                     .json(serializeBookmark(bookmark))
             })
             .catch(next)
+    })
+
+    bookmarksRouter
+        .route('/:bookmark_id')
+        .all((req,res,next) => {
+            const { bookmark_id } = req.params
+            console.log(Knex,bookmark_id)
+            bookmarksService.getById(req.app.get('db'), bookmark_id)
+                .then(bookmark => {
+                    if (!bookmark){
+                        console.log('4')
+                        logger.error(`Bookmark with id ${bookmark_id} not found.`)
+                        return res.status(404).json({
+                            error: { message: `Bookmark Not Found`}
+                        })
+                    }
+                    res.bookmark = bookmark
+                    next()
+                })
+                .catch(next)
+
         })
 
-bookmarksRouter
-    .route('/bookmarks/:bookmark_id')
-    .all((req,res, next) => {
-        const {bookmark_id} = req.params
-        bookmarksService.getById(req.app.get('db'), bookmark_id)
-        .then(bookmark => {
-            if(!bookmark) {
-                logger.error(`Bookmark with id ${bookmark_id} not found.`)
-                return res.status(404).json({
-                    error: { messsage: `Bookmark Not Found`}
-                })
-            }
-            return res.bookmark = bookmark
-            next()
+        .get((req,res) => {
+            res.json(serializeBookmark(res.bookmark))
         })
-        .catch(next)
-    })
-    .get((req, res) => {
-        res.json(serializeBookmark(res.bookmark))
-    })
-    .delete((req,res ,next) => {
-         const { bookmark_id } = req.params
-         bookmarksService.deleteBookmark(
-             req.app.get('db'),
-             bookmark_id
-         )
+
+        .delete((req, res, next) => {
+            const { bookmark_id } = req.params
+            bookmarksService.deleteBookmark(
+                req.app.get('db'),
+                bookmark_id
+            )
             .then(numRowsAffected => {
                 logger.info(`Bookmark with id ${bookmark_id} deleted.`)
                 res.status(204).end()
             })
             .catch(next)
         })
+
+        .patch(bodyParser, (req,res,next) => {
+            const { title, url, description, rating } = req.body
+            const bookmarkToUpdate = { title, url, description, rating }
+
+            const numberOfValues = Object.values(bookmarkToUpdate).filter(Boolean).length
+            if (numberOfValues === 0) {
+                logger.error(`Invalid update without required fields`)
+                return res.status(400).json({
+                    error: {
+                        message: `Request body must contain either 'title', 'url', 'description' or 'rating'`
+                    }
+                })
+            }
+            const error = getBookmarkValidationError(bookmarkToUpdate)
+
+            if (error) return res.status(400).send(error)
+
+            bookmarksService.updateBookmark(
+                req.app.get('db'),
+                req.params.bookmark_id,
+                bookmarkToUpdate
+            )
+            .then(numRowsAffected => {
+                res.status(204).end()
+            })
+            .catch(next)
+        })
+        
     module.exports = bookmarksRouter
